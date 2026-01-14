@@ -1,0 +1,22 @@
+services:
+  mirs:
+    build: . # Dockerfileの位置を指定する
+    container_name: ros2_humble_for_mirs
+    network_mode: host
+    ipc: host
+    privileged: true # USBやGPUの使用許可
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - XAUTHORITY=${XAUTHORITY}
+      - ROS_DOMAIN_ID=90
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ${XAUTHORITY}:${XAUTHORITY}
+      - /dev/bus/usb:/dev/bus/usb
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+      - /dev/ttyUSB1:/dev/ttyUSB1
+    stdin_open: true
+    tty: true # terminalの割当
+    command: bash

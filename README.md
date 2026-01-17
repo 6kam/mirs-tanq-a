@@ -147,7 +147,7 @@ docker compose down
 - [mirs240x/mirs_msgs](https://github.com/mirs240x/mirs_msgs)
 - [mirs240x/mirs_slam_navigation](https://github.com/mirs240x/mirs_slam_navigation)
 
-元の開発者の皆様に感謝いたします。
+開発者の皆様に感謝申し上げます。
 
 ## 参考リンク
 

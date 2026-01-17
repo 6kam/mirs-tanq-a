@@ -1,4 +1,4 @@
-# MIRS MG5 ROS 2 Package
+# MIRS MG5 ROS 2 Package with Docker
 
 mirs_mg5の標準的機能を備えたROS 2パッケージ（Docker対応版）
 

@@ -2,26 +2,64 @@
 
 mirs_mg5の標準的機能を備えたROS 2パッケージ（Docker対応版）
 
-## 🐳 主な改変ポイント
+## 主な改変点
 
 このリポジトリは以下のリポジトリから派生し、**Docker環境で簡単に実行できるように改変**されています：
 - [mirs240x/mirs_mg5](https://github.com/mirs240x/mirs_mg5)
 - [mirs240x/mirs_msgs](https://github.com/mirs240x/mirs_msgs)
 - [mirs240x/mirs_slam_navigation](https://github.com/mirs240x/mirs_slam_navigation)
 
-### Docker化のメリット
-- **環境構築が簡単**: ROS 2 Humbleの手動インストール不要
+### Dockerを使用するメリット
+- **環境構築が簡単**: ROS 2 Humbleと、lidarやmicro-ros-agentといったros2パッケージのインストール不要
 - **依存関係が自動解決**: rosdepによる自動インストール
 - **再現性が高い**: どのマシンでも同じ環境で実行可能
 - **クリーンな環境**: ホストシステムを汚さない
 
-## 📋 システム要件
+## 要件
 
-- Docker
+### ハードウェア
+
+- cugo v3i
+- ESP32
+- PC
+- Cytron MD10C
+
+### ソフトウェア
+
+- Docker (Docker Desktop for Windowsは使用不可)
 - Docker Compose
-- X11サーバー（GUI表示用）
+- X11サーバー (windowsの場合WSLg)
+- USBIPD-WIN https://github.com/dorssel/usbipd-win (windowsのみusb接続のために必要)
 
-## 🚀 クイックスタート
+- ESP32のセットアップは別途行う必要があります
+  - Arduino IDE
+  - [mirs240x/mirs24_esp32(esp32用ソースコード)](https://github.com/mirs240x/mirs24_esp32.git)
+  - [mirs240x/micro_ros_arduinomirs240x(micro-rosライブラリ(zipでインポート))]https://github.com/mirs240x/micro_ros_arduino_mirs240x
+
+## 含まれるパッケージ
+
+### mirs
+メインパッケージ。以下の機能を提供：
+- ESP32との通信（micro-ROS）
+- オドメトリ計算とTF配信
+- ロボットモデル（URDF）
+- ナビゲーション設定
+- SLAM設定
+
+### mirs_msgs
+カスタムメッセージ定義パッケージ
+
+## ハードウェア接続
+
+### USB デバイス
+
+`docker-compose.yml` で以下のデバイスがマウントされています：
+- `/dev/ttyUSB0`: LiDAR
+- `/dev/ttyUSB1`: ESP32
+
+Arduinoを使用する場合は、`docker-compose.yml` の上記の表記を`/dev/ttyACM0`に変更してください。
+
+## つかいかた
 
 ### 1. リポジトリのクローン
 
@@ -68,36 +106,12 @@ ros2 launch mirs pc_slam.launch.py
 ros2 launch mirs navigation.launch.py
 ```
 
-## 📦 含まれるパッケージ
-
-### mirs
-メインパッケージ。以下の機能を提供：
-- ESP32との通信（micro-ROS）
-- オドメトリ計算とTF配信
-- ロボットモデル（URDF）
-- ナビゲーション設定
-- SLAM設定
-
-### mirs_msgs
-カスタムメッセージ定義パッケージ
-
-## 🔧 開発方法
+## 開発方法
 
 ### ソースコードの編集
 
-ホストマシンの `src/` ディレクトリを編集すると、コンテナ内にも反映されます（ボリュームマウント）。
-
-### ビルド
-
-コンテナ内で：
-
-```bash
-cd /root/mirs/mirsws
-colcon build --symlink-install
-source install/setup.bash
-```
-
-`--symlink-install` オプションにより、Pythonスクリプトやlaunchファイルの変更は再ビルド不要です。
+ホストマシンの `src/` はマウントされていないので、ホストで編集したら再度ビルドする必要があります。
+コンテナ内での編集はホストに反映されません。
 
 ### デバッグ
 
@@ -109,36 +123,24 @@ ros2 node list
 ros2 topic list
 
 # トピックのデータ確認
-ros2 topic echo /cmd_vel
+ros2 topic echo /odom
+ros2 topic echo /encoder #cugov3はクローラのため値は2つ出ます
 
 # TFツリーの確認
 ros2 run tf2_tools view_frames
 ```
 
-## 🔌 ハードウェア接続
-
-### USB デバイス
-
-`docker-compose.yml` で以下のデバイスがマウントされています：
-- `/dev/ttyUSB0`: LiDAR または ESP32
-- `/dev/ttyUSB1`: ESP32 または その他のデバイス
-
-デバイスが異なる場合は、`docker-compose.yml` を編集してください。
-
-### 権限の設定
-
-USBデバイスへのアクセスには権限が必要な場合があります：
-
+## コンテナの終了方法
 ```bash
-sudo chmod 666 /dev/ttyUSB0
-sudo chmod 666 /dev/ttyUSB1
+exit
+docker compose down
 ```
 
-## 📝 ライセンス
+## ライセンス
 
 このプロジェクトはMITライセンスの下で公開されています。詳細は [LICENSE](LICENSE) を参照してください。
 
-## 🙏 謝辞
+## 謝辞
 
 このプロジェクトは以下のリポジトリから派生しています：
 - [mirs240x/mirs_mg5](https://github.com/mirs240x/mirs_mg5)
@@ -147,7 +149,7 @@ sudo chmod 666 /dev/ttyUSB1
 
 元の開発者の皆様に感謝いたします。
 
-## 📚 参考リンク
+## 参考リンク
 
 - [ROS 2 Documentation](https://docs.ros.org/en/humble/)
 - [Navigation2](https://navigation.ros.org/)

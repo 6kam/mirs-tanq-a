@@ -4,12 +4,12 @@ mirs_mg5の標準的機能を備えたROS 2パッケージ（Docker対応版）
 
 ## 主な改変点
 
-このリポジトリは以下のリポジトリから派生し、**Docker環境で簡単に実行できるように改変**されています：
-- [mirs2502/mirs_mg5](https://github.com/mirs2502/mirs_mg5)
-- [mirs2502/mirs_description](https://github.com/mirs2502/mirs_description)
-- [mirs240x/mirs_mg5](https://github.com/mirs240x/mirs_mg5)
-- [mirs240x/mirs_msgs](https://github.com/mirs240x/mirs_msgs)
-- [mirs240x/mirs_slam_navigation](https://github.com/mirs240x/mirs_slam_navigation)
+このリポジトリは、以下のリポジトリを継承・改変したものです：
+
+1. **[mirs2502](https://github.com/mirs2502)** による改変版
+   - オリジナル(mirs240x)をクローンし、Docker環境への対応などが行われたもの
+2. **[mirs240x](https://github.com/mirs240x)** によるオリジナル版
+   - プロジェクトの基盤となるROS 2パッケージ群
 
 ### Dockerを使用するメリット
 - **環境構築が簡単**: ROS 2 Humbleと、lidarやmicro-ros-agentといったros2パッケージのインストール不要
@@ -146,14 +146,12 @@ docker compose down
 
 ## 謝辞
 
-このプロジェクトは以下のリポジトリから派生しています：
-- [mirs2502/mirs_mg5](https://github.com/mirs2502/mirs_mg5)
-- [mirs2502/mirs_description](https://github.com/mirs2502/mirs_description)
-- [mirs240x/mirs_mg5](https://github.com/mirs240x/mirs_mg5)
-- [mirs240x/mirs_msgs](https://github.com/mirs240x/mirs_msgs)
-- [mirs240x/mirs_slam_navigation](https://github.com/mirs240x/mirs_slam_navigation)
+このプロジェクトは、以下の先行開発の成果を継承しています：
 
-開発者の皆様に感謝申し上げます。
+- **mirs2502** ([GitHub](https://github.com/mirs2502))
+- **mirs240x** ([GitHub](https://github.com/mirs240x))
+
+開発に携わった皆様に感謝申し上げます。
 
 ## 参考リンク
 

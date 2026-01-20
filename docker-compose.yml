@@ -15,6 +15,7 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - ~/.Xauthority:/tmp/.Xauthority:ro
       - /dev/bus/usb:/dev/bus/usb
+      - /dev/input:/dev/input
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
       - /dev/ttyUSB1:/dev/ttyUSB1

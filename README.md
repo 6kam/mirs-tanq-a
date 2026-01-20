@@ -92,16 +92,22 @@ docker compose exec mirs bash
 ### 5. ROS 2 ノードのビルドと実行
 
 #### ビルド
-コンテナ内で便利なエイリアスが使用可能です：
+コンテナ内で便利なエイリアスが使用可能です
+- `ru`: `rosdep update`
+- `ri`: `rosdep install --from-path src --ignore-src -r -y`
 - `cb`: `colcon build --symlink-install` (全ビルド)
 - `cbs`: `colcon build --symlink-install --packages-select` (パッケージ指定)
 - `cbt`: `colcon build --symlink-install --packages-up-to` (依存込み)
+コンテナ内では次のコマンドは起動時に宣言されています
+```
+source /opt/ros/humble/setup.bash
+source install/setup.bash
+```
 
 ```bash
-rosdep update
-rosdep install --from-path src --ignore-src -r -y
+ru
+ri
 cb
-source install/setup.bash
 ```
 
 #### 実行

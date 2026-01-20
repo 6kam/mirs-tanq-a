@@ -2,8 +2,10 @@ services:
   mirs:
     build: . # Dockerfileの位置を指定する
     container_name: ros2_humble_for_mirs250x
+    privileged: true  #すべての権限付与（本番環境では使わない）
     network_mode: host
     ipc: host
+    pid: host
 
     environment:
       - DISPLAY=${DISPLAY}

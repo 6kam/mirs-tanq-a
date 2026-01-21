@@ -14,6 +14,14 @@ RUN apt-get update && \
     libcanberra-gtk3-module
 
 WORKDIR /root/projects/mirsws
+ENV ROS_DISTRO=humble
+ENV AMENT_PREFIX_PATH=/opt/ros/humble
+ENV COLCON_PREFIX_PATH=/opt/ros/humble
+ENV LD_LIBRARY_PATH=/opt/ros/humble/lib
+ENV PATH=/opt/ros/humble/bin:$PATH
+ENV PYTHONPATH=/opt/ros/humble/lib/python3.10/site-packages:$PYTHONPATH
+ENV ROS_PYTHON_VERSION=3
+ENV ROS_VERSION=2
 
 RUN echo "source /opt/ros/humble/setup.bash" >> /root/.bashrc && \
     echo 'export PS1="\[\e[32m\]\u@mirs-sim\[\e[m\]:\[\e[34m\]\w\[\e[m\]\\$ "' >> /root/.bashrc && \

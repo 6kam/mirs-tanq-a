@@ -62,6 +62,10 @@ Arduino IDEに以下のソースコードとライブラリを導入する
   - [mirs240x/micro_ros_arduino_mirs240x](https://github.com/mirs240x/micro_ros_arduino_mirs240x)
     - micro-rosライブラリ。zipでインポート
 
+    ボードの選択についてはArduinoIDEにespのボードマネージャのバージョン2.x系を導入する必要があり、必要に応じてArduinoIDEをダウングレードしてください。
+
+    また、ボードについてはesp32 dev moduleを実行環境では使用しました。
+
 ### 2. リポジトリのクローン
 
 ```bash

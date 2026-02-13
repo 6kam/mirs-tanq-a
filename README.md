@@ -17,12 +17,6 @@ mirs_mg5の標準的機能を備えたROS 2パッケージ（Docker対応版）
 - **nav2 params**: コストマップについての調整がまだ詰め切れていません。cloneのままの環境での動作ができなければそこを調整してください。
 - **map**: pc_slam.launch.pyでmapを作成したものをそのまま使用すると正常に動作しない。計測についてのパラメータを調整するか、ペイントアプリなどで点のまばらなところの塗りつぶしや、足跡が壁として認識された場合には白く塗りつぶすなどする必要がある。
 
-### Dockerを使用するメリット
-- **環境構築が簡単**: ROS 2 Humbleと、lidarやmicro-ros-agentといったros2パッケージのインストール不要
-- **依存関係が自動解決**: `mirs/package.xml` に基づき `rosdep` が自動で必要なパッケージをインストール
-- **再現性が高い**: どのマシンでも同じ環境で実行可能
-- **クリーンな環境**: ホストシステムを汚さない
-
 ## 要件
 
 ### ハードウェア
@@ -70,7 +64,7 @@ Arduino IDEに以下のソースコードとライブラリを導入する
 
 ```bash
 git clone https://github.com/6kam/MirsTanq_A.git
-cd MirsTanq_A/mirsws/src
+cd mirs-tanq-a/src
 git clone -b humble https://github.com/micro-ROS/micro-ROS-Agent.git
 git clone https://github.com/Slamtec/sllidar_ros2.git
 git clone -b humble https://github.com/micro-ROS/micro_ros_msgs.git
@@ -143,8 +137,7 @@ ros2 launch mirs navigation.launch.py
 
 ### ソースコードの編集
 
-ホストマシンの `src/` はコンテナ内でマウントされているので、コンテナ内で編集してもホストに反映されます。
-コンテナ内で編集したときは、`cb` でビルドできます。
+ホストマシンの `src/` はコンテナ内でマウントされているので、コンテナ起動中にホストで編集した内容がすぐに反映されます。
 
 ### デバッグ
 

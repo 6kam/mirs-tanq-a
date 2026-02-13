@@ -9,7 +9,7 @@ services:
 
     environment:
       - DISPLAY=${DISPLAY}
-      - XAUTHORITY=${XAUTHORITY}
+     # - XAUTHORITY=${XAUTHORITY}
       - XDG_RUNTIME_DIR=/tmp/runtime-root
       - QT_X11_NO_MITSHM=1
       - ROS_DOMAIN_ID=90
@@ -17,7 +17,7 @@ services:
     volumes:
       - ./src:/root/projects/mirsws/src
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - ${XAUTHORITY:-dev/null}:${XAUTHORITY}:ro
+     # - ${XAUTHORITY:-dev/null}:${XAUTHORITY}:ro
 
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0 #LiDAR

@@ -1,7 +1,7 @@
 services:
   mirs:
     build: . # Dockerfileの位置を指定する
-    container_name: ros2_humble_for_mirs250x
+    container_name: ros2_humble_for_mirs
     privileged: true #すべての権限付与（本番環境では使わない）
     network_mode: host
     ipc: host
@@ -17,7 +17,7 @@ services:
     volumes:
       - ./src:/root/projects/mirsws/src
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - ${XAUTHORITY}:${XAUTHORITY}:ro
+      - ${XAUTHORITY:-dev/null}:${XAUTHORITY}:ro
 
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0 #LiDAR

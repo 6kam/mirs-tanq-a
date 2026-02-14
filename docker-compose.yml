@@ -22,7 +22,6 @@ services:
       - /dev/ttyUSB1:/dev/ttyUSB1 #ESP32
       - /dev/input/js0:/dev/input/js0 #joystick
 
-    entrypoint: /usr/local/bin/entrypoint.sh
     stdin_open: true
     tty: true # terminalの割当
     command: bash
@@ -45,14 +44,13 @@ services:
     volumes:
       - ./src:/root/projects/mirsws/src
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - ${XAUTHORITY:-/dev/null}:${XAUTHORITY}:ro
+      - ${XAUTHORITY:-dev/null}:${XAUTHORITY}:ro
 
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
       - /dev/ttyUSB1:/dev/ttyUSB1
       - /dev/input/js0:/dev/input/js0
 
-    entrypoint: /usr/local/bin/entrypoint.sh
     stdin_open: true
     tty: true
     command: bash

@@ -11,11 +11,11 @@ mirs_mg5の標準的機能を備えたROS 2パッケージ（Docker対応版）
 2. **[mirs240x](https://github.com/mirs240x)** によるオリジナル版
    - プロジェクトの基盤となるROS 2パッケージ群
      
-### 解決していない問題点
-- **TFツリー**: base_footprintとbase_linkについて動作の成功要因が把握できていない。
+### 問題点
+- **TFツリー**: base_footprintとbase_linkについて動作の条件が把握できていない。現状はbase_linkを採用。
 - **joystickについて**: 正常な動作が確認できていません。暴走するのでlaunchしないことを推奨。
 - **nav2 params**: コストマップについての調整がまだ詰め切れていません。cloneのままの環境での動作ができなければそこを調整してください。
-- **map**: pc_slam.launch.pyでmapを作成したものをそのまま使用すると正常に動作しない。計測についてのパラメータを調整するか、ペイントアプリなどで点のまばらなところの塗りつぶしや、足跡が壁として認識された場合には白く塗りつぶすなどする必要がある。
+- **map**: pc_slam.launch.pyでmapを作成したものをそのまま使用すると正常に動作しない可能性がある。計測についてのパラメータを調整するか、ペイントアプリなどで点のまばらなところの塗りつぶしや、足跡が壁として認識された場合には白く塗りつぶすなどする。
 
 ## 要件
 
@@ -31,19 +31,20 @@ mirs_mg5の標準的機能を備えたROS 2パッケージ（Docker対応版）
 - Docker (Docker Desktop for Windowsは使用不可)
 - Docker Compose
 - X11サーバー (Windowsの場合WSLg)
-- USBIPD-WIN [GitHub](https://github.com/dorssel/usbipd-win) (WindowsのみUSB接続のために必要)
+- USBIPD-WIN [GitHub](https://github.com/dorssel/usbipd-win) (Windows WSL2環境のみUSB接続のために必要)
 - Arduino IDE (ESP32にmicro-ros-clientを導入するため)
 
 ## 含まれるパッケージ
 
 ### mirs
-メインパッケージ。以下の機能を提供：
+
 - ESP32との通信（micro-ROS）
 - オドメトリ計算とTF配信
 - ロボットモデル（URDF）
 - navigation2 / SLAM
 
 ### mirs_msgs
+
 カスタムメッセージ定義パッケージ
 
 ## つかいかた
@@ -168,7 +169,7 @@ docker compose down
 
 ## 謝辞
 
-このプロジェクトは、以下の先行開発の成果を継承しています：
+このプロジェクトは、以下の先行開発の成果を継承しています
 
 - **mirs2502** ([GitHub](https://github.com/mirs2502))
 - **mirs240x** ([GitHub](https://github.com/mirs240x))

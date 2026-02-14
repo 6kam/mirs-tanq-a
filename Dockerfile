@@ -31,5 +31,8 @@ RUN echo "source /opt/ros/humble/setup.bash" >> /root/.bashrc && \
     echo "alias ru='rosdep update'" >> /root/.bashrc && \
     echo "alias ri='rosdep install --from-path src --ignore-src -r -y'" >> /root/.bashrc && \
     echo "alias si='source install/setup.bash'" >> /root/.bashrc
+# entrypoint: ensures X/WSLg environment is exported for interactive shells (writes /etc/profile.d/99-x11.sh)
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
-CMD ["bash"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]CMD ["bash"]

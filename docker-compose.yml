@@ -1,32 +1,5 @@
 services:
-  wsl:
-    build: . # Dockerfileの位置を指定する
-    container_name: hubmle_wsl
-    privileged: true #すべての権限付与（本番環境では使わない）
-    network_mode: host
-    ipc: host
-    pid: host
-
-    environment:
-      - DISPLAY=${DISPLAY}
-      - XDG_RUNTIME_DIR=/tmp/runtime-root
-      - QT_X11_NO_MITSHM=1
-      - ROS_DOMAIN_ID=90
-
-    volumes:
-      - ./src:/root/projects/mirsws/src
-      - /tmp/.X11-unix:/tmp/.X11-unix
-
-    devices:
-      - /dev/ttyUSB0:/dev/ttyUSB0 #LiDAR
-      - /dev/ttyUSB1:/dev/ttyUSB1 #ESP32
-      - /dev/input/js0:/dev/input/js0 #joystick
-
-    stdin_open: true
-    tty: true # terminalの割当
-    command: bash
-
-  linux:
+  mirs:
     build: .
     container_name: humble_linux
     privileged: true
@@ -36,7 +9,7 @@ services:
 
     environment:
       - DISPLAY=${DISPLAY}
-      - XAUTHORITY=${XAUTHORITY}
+      #- XAUTHORITY=${XAUTHORITY}
       - XDG_RUNTIME_DIR=/tmp/runtime-root
       - QT_X11_NO_MITSHM=1
       - ROS_DOMAIN_ID=90
@@ -44,7 +17,7 @@ services:
     volumes:
       - ./src:/root/projects/mirsws/src
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - ${XAUTHORITY:-dev/null}:${XAUTHORITY}:ro
+      #- ${XAUTHORITY}:${XAUTHORITY}:ro
 
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0

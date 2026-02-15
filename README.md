@@ -128,10 +128,10 @@ ros2 launch mirs mirs.launch.py
 ros2 launch mirs display.launch.py
 
 # SLAM実行
-ros2 launch mirs pc_slam.launch.py
+ros2 launch mirs slam.launch.py
 
 # ナビゲーション
-ros2 launch mirs navigation.launch.py
+ros2 launch mirs nav.launch.py
 ```
 
 ## 開発方法

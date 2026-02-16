@@ -28,7 +28,8 @@ mirs_mg5の標準的機能を備えたROS 2パッケージ（Docker対応版）
 
 ### ソフトウェア
 
-- Docker (Docker Desktop for Windowsは使用不可)
+- Linux (Arch Linux(Hyprland), Ubuntu 24.04, WSL2上のArch Linuxで動作確認済み)
+- Docker (Docker Desktopは不可)
 - Docker Compose
 - X11サーバー (Windowsの場合WSLg)
 - USBIPD-WIN [GitHub](https://github.com/dorssel/usbipd-win) (Windows WSL2環境のみUSB接続のために必要)
@@ -124,23 +125,20 @@ si
 先にlidarを接続することでttyUSB0がLiDARになるはずです。launchのときにusbポートを指定する必要はありません。
 ```bash
 # 基本的なシステム起動
-ros2 launch mirs mirs.launch.py
-
-# ロボットモデルの可視化（RViz2）
-ros2 launch mirs display.launch.py
+mirs
 
 # SLAM実行
-ros2 launch mirs slam.launch.py
+slam
 
 # ナビゲーション
-ros2 launch mirs nav.launch.py
+nav
 ```
 
 ## 開発方法
 
 ### ソースコードの編集
 
-ホストマシンの `src/` はコンテナ内でマウントされているので、コンテナ起動中にホストで編集した内容がすぐに反映されます。
+ホストマシンの `src/` はコンテナ内でマウントされているので、ホストで編集した内容が起動中のコンテナにすぐに反映されます。
 
 ### デバッグ
 

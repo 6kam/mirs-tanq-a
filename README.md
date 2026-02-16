@@ -31,7 +31,6 @@ mirs_mg5の標準的機能を備えたROS 2パッケージ（Docker対応版）
 - Linux (Arch Linux(Hyprland), Ubuntu 24.04, WSL2上のArch Linuxで動作確認済み)
 - Docker (Docker Desktopは不可)
 - Docker Compose
-- X11サーバー (Windowsの場合WSLg)
 - USBIPD-WIN [GitHub](https://github.com/dorssel/usbipd-win) (Windows WSL2環境のみUSB接続のために必要)
 - Arduino IDE (ESP32にmicro-ros-clientを導入するため)
 

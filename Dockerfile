@@ -30,6 +30,9 @@ RUN echo "source /opt/ros/humble/setup.bash" >> /root/.bashrc && \
     echo "alias cbt='colcon build --symlink-install --packages-up-to'" >> /root/.bashrc && \
     echo "alias ru='rosdep update'" >> /root/.bashrc && \
     echo "alias ri='rosdep install --from-path src --ignore-src -r -y'" >> /root/.bashrc && \
-    echo "alias si='source install/setup.bash'" >> /root/.bashrc
+    echo "alias si='source install/setup.bash'" >> /root/.bashrc && \
+    echo "alias mirs='ros2 launch mirs mirs.launch.py'" >> /root/.bashrc && \
+    echo "alias slam='ros2 launch mirs slam.launch.py'" >> /root/.bashrc && \
+    echo "alias nav='ros2 launch mirs nav.launch.py'" >> /root/.bashrc
 
 CMD ["bash"]

@@ -97,6 +97,9 @@ docker compose exec mirs bash
 - `cbs`: `colcon build --symlink-install --packages-select` (パッケージ指定)
 - `cbt`: `colcon build --symlink-install --packages-up-to` (依存込み)
 - `si`: `source install/setup.bash`
+- `mirs`: `ros2 launch mirs mirs.launch.py`
+- `slam`: `ros2 launch mirs slam.launch.py`
+- `nav`: `ros2 launch mris nav.launch.py`
 
 コンテナ内では次のコマンドは起動時に宣言されています
 

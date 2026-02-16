@@ -139,7 +139,39 @@ nav
 
 ### デバッグ
 
+pid値の設定ファイルパス
+mirs-tanq-a/src/mirs_mg5/mirs/config/config.yaml
+
 ```bash
+# ノードのリスト表示
+ros2 node list
+
+# トピックのリスト表示
+ros2 topic list
+
+# 走行の確認方法
+#以下の走行についてのコマンドを実行する前に別のターミナルでdockerコンテナに入り、
+mirs
+# を実行すること
+
+# 前進(0.2m/s)
+ros2 topic pub /cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.2, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}"
+
+# 後退(0.2m/s)
+ros2 topic pub /cmd_vel geometry_msgs/msg/Twist "{linear: {x: -0.2, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}"
+
+# 回転(0.5rad/s)
+ros2 topic pub /cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.5}}"
+
+# 停止
+ros2 topic pub /cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.0, y: 0.0, z: 0.0}, angular: {x: 0.0, y: 0.0, z: 0.0}}"
+
+# 3m直進
+ros2 run mirs odom_linear_test.py
+
+# 回転
+ros2 run mirs odom_rotate_test.py
+
 # ノードのリスト表示
 ros2 node list
 

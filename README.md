@@ -53,10 +53,9 @@ mirs_mg5の標準的機能を備えたROS 2パッケージ（Docker対応版）
 ### 1. ESP32のセットアップ
 
 Arduino IDEに以下のソースコードとライブラリを導入する
-- esp32用ソースコード[(https://github.com/6kam/mirs_tanq_a_esp)]
+- esp32用ソースコード[mirs-tanq-a-esp](https://github.com/6kam/mirs_tanq_a_esp)
     - 上のソースコードの元になったコード[mirs240x/mirs24_esp32(esp32用ソースコード)](https://github.com/mirs240x/mirs24_esp32.git)
--  micro-rosライブラリ。zipでインポート
-    - [mirs240x/micro_ros_arduino_mirs240x](https://github.com/mirs240x/micro_ros_arduino_mirs240x)
+- micro-rosライブラリ。zipでインポート [mirs240x/micro_ros_arduino_mirs240x](https://github.com/mirs240x/micro_ros_arduino_mirs240x)
 
     ボードの選択についてはArduinoIDEにespのボードマネージャのバージョン2.x系を導入する必要があります。
     また、ボードについてはesp32 dev moduleを使用してください。

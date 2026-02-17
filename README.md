@@ -80,7 +80,7 @@ docker compose build
 ### 4. コンテナの起動
 
 ```bash
-xhost +local:docker  # X11転送を許可（初回のみ）
+xhost +local:  # X11転送を許可（初回のみ）
 docker compose up -d
 docker compose exec mirs bash
 ```

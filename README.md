@@ -61,7 +61,7 @@ Arduino IDEに以下のソースコードとライブラリを導入する
 ### 2. リポジトリのクローン
 
 ```bash
-git clone https://github.com/6kam/MirsTanq_A.git
+git clone https://github.com/6kam/mirs-tanq-a.git
 cd mirs-tanq-a/src
 git clone -b humble https://github.com/micro-ROS/micro-ROS-Agent.git
 git clone https://github.com/Slamtec/sllidar_ros2.git

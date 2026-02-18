@@ -80,7 +80,7 @@ docker compose build
 ### 4. コンテナの起動
 
 ```bash
-xhost +local:  # X11転送を許可（初回のみ）
+xhost +local:  # X11転送を許可（WSL環境の場合はやらなくて良い Wayland環境の初回のみ）
 docker compose up -d
 docker compose exec mirs bash
 ```

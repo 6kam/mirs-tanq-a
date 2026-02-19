@@ -80,7 +80,7 @@ docker compose build
 ### 4. コンテナの起動
 
 ```bash
-xhost +local:  # X11転送を許可（WSL環境の場合はやらなくて良い Wayland環境の初回のみ）
+xhost +local:  # X11転送を許可（WSL環境の場合はやらなくて良い)
 docker compose up -d
 docker compose exec mirs bash
 ```
@@ -130,10 +130,11 @@ slam
 # 自立走行
 nav
 ```
-まずはmirsを実行しましょう。別のターミナルを開いてdockerコンテナ内で、以下のデバッグの方法をいくつか試して、エンコーダの値や、オドメトリの値、走行試験などが正常に動いたらマップの作成をします。mirsをコントローラを使ってmirsを移動させ、マップを作成します。mirsが移動したとき、rviz2上でmirsが移動していることを確認してください。map作成にはlidarとエンコーダの接続が必要です。
+まずはmirsを実行しましょう。別のターミナルを開いてdockerコンテナ内に入り、以下のデバッグの方法をいくつか試して、エンコーダの値や、オドメトリの値、走行試験などが正常に動いたらマップの作成をします。mirsをコントローラを使ってmirsを移動させ、マップを作成します。mirsが移動したとき、rviz2上でmirsが移動していることを確認してください。map作成にはlidarとエンコーダの接続が必要です。
 
 ```bash
-ros2 run nav2_map_server map_server_cli -f ./src/mirs_mg5/mirs/map
+# mapの保存コマンド(別ターミナルでdockerコンテナに入っておこなう)
+ros2 run nav2_map_server map_server_cli -f /root/projects/mirsws/src/mirs_mg5/mirs/maps
 ```
 
 

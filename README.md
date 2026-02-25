@@ -84,6 +84,11 @@ xhost +local:  # X11転送を許可（WSL環境の場合はやらなくて良い
 docker compose up -d
 docker compose exec mirs bash
 ```
+前にビルドしたコンテナを再起動する場合、コンテナ内で以下を実行してください
+```bash
+apt clean; apt update
+```
+その後、コンテナから一旦exitし、再度入り直してください
 
 ### 5. ROS 2 ノードのビルドと実行
 
